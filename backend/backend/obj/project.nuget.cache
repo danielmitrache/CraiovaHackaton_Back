@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "YHLac37+XEg=",
+  "success": true,
+  "projectFilePath": "/Users/mihai/Desktop/Craiova/CraiovaHackaton_Back/backend/backend/backend.csproj",
+  "expectedPackageFiles": [
+    "/Users/mihai/.nuget/packages/microsoft.aspnetcore.openapi/9.0.8/microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
+    "/Users/mihai/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
