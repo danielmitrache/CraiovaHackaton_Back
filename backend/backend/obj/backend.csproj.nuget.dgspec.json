@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mihai/Desktop/Craiova/CraiovaHackaton_Back/backend/backend/backend.csproj": {}
+    "c:\\Users\\aniso\\source\\repos\\Hackathon\\Back\\CraiovaHackaton_Back\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "/Users/mihai/Desktop/Craiova/CraiovaHackaton_Back/backend/backend/backend.csproj": {
+    "c:\\Users\\aniso\\source\\repos\\Hackathon\\Back\\CraiovaHackaton_Back\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mihai/Desktop/Craiova/CraiovaHackaton_Back/backend/backend/backend.csproj",
+        "projectUniqueName": "c:\\Users\\aniso\\source\\repos\\Hackathon\\Back\\CraiovaHackaton_Back\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "/Users/mihai/Desktop/Craiova/CraiovaHackaton_Back/backend/backend/backend.csproj",
-        "packagesPath": "/Users/mihai/.nuget/packages/",
-        "outputPath": "/Users/mihai/Desktop/Craiova/CraiovaHackaton_Back/backend/backend/obj/",
+        "projectPath": "c:\\Users\\aniso\\source\\repos\\Hackathon\\Back\\CraiovaHackaton_Back\\backend\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\aniso\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\aniso\\source\\repos\\Hackathon\\Back\\CraiovaHackaton_Back\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/mihai/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\aniso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -68,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
