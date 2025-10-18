@@ -31,7 +31,7 @@ public partial class Service
 
     [ForeignKey("city_id")]
     [InverseProperty("services")]
-    public virtual city? city { get; set; }
+    public virtual City? city { get; set; }
 
     [ForeignKey("id")]
     [InverseProperty("service")]

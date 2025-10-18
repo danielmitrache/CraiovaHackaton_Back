@@ -6,7 +6,7 @@ namespace backend.Models;
 
 [Table("city")]
 [Index("name", Name = "city_name_key", IsUnique = true)]
-public partial class city
+public partial class City
 {
     [Key]
     public long id { get; set; }
@@ -15,6 +15,6 @@ public partial class city
     public string name { get; set; } = null!;
 
     [InverseProperty("city")]
-    public virtual ICollection<service> services { get; set; } = new List<service>();
+    public virtual ICollection<Service> services { get; set; } = new List<Service>();
 }
 
