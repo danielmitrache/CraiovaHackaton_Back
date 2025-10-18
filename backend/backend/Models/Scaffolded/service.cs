@@ -8,7 +8,7 @@ namespace backend.Models.Scaffolded;
 
 [Index("city_id", Name = "idx_services_city")]
 [Index("cui", Name = "services_cui_key", IsUnique = true)]
-public partial class service
+public partial class Service
 {
     [Key]
     public long id { get; set; }
@@ -36,5 +36,5 @@ public partial class service
 
     [ForeignKey("id")]
     [InverseProperty("service")]
-    public virtual login idNavigation { get; set; } = null!;
+    public virtual Login idNavigation { get; set; } = null!;
 }

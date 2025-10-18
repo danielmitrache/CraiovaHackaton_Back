@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Models;
 
 [Table("users")]
-public partial class user
+public partial class User
 {
     [Key]
     public long id { get; set; }
@@ -14,9 +14,9 @@ public partial class user
     public string name { get; set; } = null!;
 
     [InverseProperty("owner")]
-    public virtual ICollection<car> cars { get; set; } = new List<car>();
+    public virtual ICollection<Car> cars { get; set; } = new List<Car>();
 
     [ForeignKey("id")]
     [InverseProperty("user")]
-    public virtual login idNavigation { get; set; } = null!;
+    public virtual Login idNavigation { get; set; } = null!;
 }

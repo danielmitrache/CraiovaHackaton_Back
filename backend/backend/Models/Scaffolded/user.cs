@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models.Scaffolded;
 
-public partial class user
+public partial class User
 {
     [Key]
     public long id { get; set; }
@@ -18,5 +18,5 @@ public partial class user
 
     [ForeignKey("id")]
     [InverseProperty("user")]
-    public virtual login idNavigation { get; set; } = null!;
+    public virtual Login idNavigation { get; set; } = null!;
 }

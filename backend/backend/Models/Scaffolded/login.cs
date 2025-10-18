@@ -8,7 +8,7 @@ namespace backend.Models.Scaffolded;
 
 [Table("login")]
 [Index("email", Name = "login_email_key", IsUnique = true)]
-public partial class login
+public partial class Login
 {
     [Key]
     public long id { get; set; }
@@ -18,8 +18,8 @@ public partial class login
     public string email { get; set; } = null!;
 
     [InverseProperty("idNavigation")]
-    public virtual service? service { get; set; }
+    public virtual Service? service { get; set; }
 
     [InverseProperty("idNavigation")]
-    public virtual user? user { get; set; }
+    public virtual User? user { get; set; }
 }

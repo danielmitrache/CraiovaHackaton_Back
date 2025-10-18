@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Models;
 
 [Table("appointment")]
-public partial class appointment
+public partial class Appointment
 {
     [Key]
     [Column(Order = 0)]
@@ -28,10 +28,10 @@ public partial class appointment
 
     [ForeignKey("car_id")]
     [InverseProperty("appointments")]
-    public virtual car car { get; set; } = null!;
+    public virtual Car car { get; set; } = null!;
 
     [ForeignKey("service_id")]
     [InverseProperty("appointments")]
-    public virtual service service { get; set; } = null!;
+    public virtual Service service { get; set; } = null!;
 }
 
