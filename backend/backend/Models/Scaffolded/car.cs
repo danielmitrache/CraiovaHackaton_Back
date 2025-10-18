@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Models.Scaffolded;
 
 [Index("owner_id", Name = "idx_cars_owner")]
-public partial class car
+public partial class Car
 {
     [Key]
     public long id { get; set; }

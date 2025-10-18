@@ -14,7 +14,7 @@ public partial class User
     public string name { get; set; } = null!;
 
     [InverseProperty("owner")]
-    public virtual ICollection<car> cars { get; set; } = new List<car>();
+    public virtual ICollection<Car> cars { get; set; } = new List<Car>();
 
     [ForeignKey("id")]
     [InverseProperty("user")]

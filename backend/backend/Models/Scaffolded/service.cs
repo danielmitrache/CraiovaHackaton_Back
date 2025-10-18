@@ -28,11 +28,11 @@ public partial class Service
     public bool? can_itp { get; set; }
 
     [InverseProperty("service")]
-    public virtual ICollection<appointment> appointments { get; set; } = new List<appointment>();
+    public virtual ICollection<Appointment> appointments { get; set; } = new List<Appointment>();
 
     [ForeignKey("city_id")]
     [InverseProperty("services")]
-    public virtual city? city { get; set; }
+    public virtual City? city { get; set; }
 
     [ForeignKey("id")]
     [InverseProperty("service")]
