@@ -17,6 +17,9 @@ public class Program
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
         );
 
+        // Register handlers
+        builder.Services.AddScoped<backend.Handlers.ServiceHandler>();
+
         builder.Services.AddOpenApi();
 
         var app = builder.Build();
