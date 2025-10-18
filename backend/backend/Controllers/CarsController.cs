@@ -17,7 +17,7 @@ public class CarsController : ControllerBase
 
     // GET /api/cars/{id}
     [HttpGet("{id:long}")]
-    public async Task<ActionResult<car>> GetById(long id, CancellationToken ct)
+    public async Task<ActionResult<Car>> GetById(long id, CancellationToken ct)
     {
         var entity = await _db.cars.FindAsync(new object[] { id }, ct);
         if (entity is null)
