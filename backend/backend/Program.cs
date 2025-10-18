@@ -19,6 +19,7 @@ public class Program
 
         // Register handlers
         builder.Services.AddScoped<backend.Handlers.ServiceHandler>();
+        builder.Services.AddScoped<backend.Handlers.UserHandler>();
 
         builder.Services.AddOpenApi();
 
