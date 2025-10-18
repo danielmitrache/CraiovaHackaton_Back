@@ -1,6 +1,6 @@
 namespace backend;
 
-using backend.Data;
+using backend.Data.Scaffolded;
 using Microsoft.EntityFrameworkCore;
 
 public class Program
@@ -12,8 +12,8 @@ public class Program
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
 
-        // Register DbContext with Npgsql using ConnectionStrings:DefaultConnection
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        // Register SupabaseDbContext with Npgsql using ConnectionStrings:DefaultConnection
+        builder.Services.AddDbContext<SupabaseDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
         );
 

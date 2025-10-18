@@ -1,29 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Models;
+namespace backend.Models.Scaffolded;
 
-[Table("login")]
-[Index("email", Name = "login_email_key", IsUnique = true)]
-public partial class login
+[Table("Login")]
+[Index("email", Name = "Login_email_key", IsUnique = true)]
+public partial class Login
 {
     [Key]
     public long id { get; set; }
 
-    [Required]
     public string password { get; set; } = null!;
 
-    [Required]
     public string email { get; set; } = null!;
 
-    [Column("account_type")]
-    public AccountType account_type { get; set; }
+    public short account_type { get; set; }
 
     [InverseProperty("idNavigation")]
-    public virtual service? service { get; set; }
+    public virtual Service? Service { get; set; }
 
     [InverseProperty("idNavigation")]
-    public virtual user? user { get; set; }
+    public virtual User? User { get; set; }
 }
-

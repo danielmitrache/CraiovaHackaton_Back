@@ -9,7 +9,7 @@ namespace backend.Models.Scaffolded;
 [PrimaryKey("car_id", "service_id")]
 [Index("car_id", "start_date", Name = "idx_appt_car_dt")]
 [Index("service_id", "start_date", Name = "idx_appt_service_dt")]
-public partial class appointment
+public partial class Appointment
 {
     [Key]
     public long car_id { get; set; }
@@ -28,10 +28,10 @@ public partial class appointment
     public decimal? material_price { get; set; }
 
     [ForeignKey("car_id")]
-    [InverseProperty("appointments")]
-    public virtual car car { get; set; } = null!;
+    [InverseProperty("Appointments")]
+    public virtual Car car { get; set; } = null!;
 
     [ForeignKey("service_id")]
-    [InverseProperty("appointments")]
-    public virtual service service { get; set; } = null!;
+    [InverseProperty("Appointments")]
+    public virtual Service service { get; set; } = null!;
 }

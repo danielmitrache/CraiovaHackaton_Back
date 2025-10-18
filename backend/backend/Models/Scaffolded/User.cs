@@ -1,22 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Models;
+namespace backend.Models.Scaffolded;
 
-[Table("users")]
-public partial class user
+public partial class User
 {
     [Key]
     public long id { get; set; }
 
-    [Required]
     public string name { get; set; } = null!;
 
     [InverseProperty("owner")]
-    public virtual ICollection<car> cars { get; set; } = new List<car>();
+    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
 
     [ForeignKey("id")]
-    [InverseProperty("user")]
-    public virtual login idNavigation { get; set; } = null!;
+    [InverseProperty("User")]
+    public virtual Login idNavigation { get; set; } = null!;
 }

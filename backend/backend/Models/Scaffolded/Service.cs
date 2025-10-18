@@ -1,17 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Models;
+namespace backend.Models.Scaffolded;
 
-[Table("services")]
-[Index("cui", Name = "services_cui_key", IsUnique = true)]
-public partial class service
+[Index("cui", Name = "Services_cui_key", IsUnique = true)]
+[Index("city_id", Name = "idx_services_city")]
+public partial class Service
 {
     [Key]
     public long id { get; set; }
 
-    [Required]
     public string name { get; set; } = null!;
 
     public int? nr_employees { get; set; }
@@ -27,14 +28,13 @@ public partial class service
     public bool? can_itp { get; set; }
 
     [InverseProperty("service")]
-    public virtual ICollection<appointment> appointments { get; set; } = new List<appointment>();
+    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
     [ForeignKey("city_id")]
-    [InverseProperty("services")]
-    public virtual city? city { get; set; }
+    [InverseProperty("Services")]
+    public virtual City? city { get; set; }
 
     [ForeignKey("id")]
-    [InverseProperty("service")]
-    public virtual login idNavigation { get; set; } = null!;
+    [InverseProperty("Service")]
+    public virtual Login idNavigation { get; set; } = null!;
 }
-

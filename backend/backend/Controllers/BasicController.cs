@@ -1,14 +1,14 @@
 namespace backend.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using backend.Data;
+using backend.Data.Scaffolded;
 
 [ApiController]
 [Route("api/[controller]")]
 public class BasicController : ControllerBase
 {
-    private readonly ApplicationDbContext _db;
+    private readonly SupabaseDbContext _db;
 
-    public BasicController(ApplicationDbContext db)
+    public BasicController(SupabaseDbContext db)
     {
         _db = db;
     }
