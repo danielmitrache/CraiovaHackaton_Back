@@ -1,22 +1,22 @@
-using backend.Data;
+using backend.Data.Scaffolded;
 using backend.DTOs;
-using backend.Models;
+using backend.Models.Scaffolded;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Handlers;
 
 public class ServiceHandler
 {
-    private readonly ApplicationDbContext _context;
+    private readonly SupabaseDbContext _context;
 
-    public ServiceHandler(ApplicationDbContext context)
+    public ServiceHandler(SupabaseDbContext context)
     {
         _context = context;
     }
 
     public async Task<IEnumerable<ServiceDto>> GetAllAsync()
     {
-        return await _context.services
+        return await _context.Services
             .Include(s => s.city)
             .Select(s => new ServiceDto
             {
@@ -35,7 +35,7 @@ public class ServiceHandler
 
     public async Task<ServiceDto?> GetByIdAsync(long id)
     {
-        var service = await _context.services
+        var service = await _context.Services
             .Include(s => s.city)
             .FirstOrDefaultAsync(s => s.id == id);
 
@@ -69,7 +69,7 @@ public class ServiceHandler
             can_itp = createDto.CanItp ?? false
         };
 
-        _context.services.Add(service);
+        _context.Services.Add(service);
         await _context.SaveChangesAsync();
 
         return new ServiceDto
@@ -87,7 +87,7 @@ public class ServiceHandler
 
     public async Task<ServiceDto?> UpdateAsync(long id, UpdateServiceDto updateDto)
     {
-        var service = await _context.services.FindAsync(id);
+        var service = await _context.Services.FindAsync(id);
         if (service == null)
             return null;
 
@@ -123,11 +123,11 @@ public class ServiceHandler
 
     public async Task<bool> DeleteAsync(long id)
     {
-        var service = await _context.services.FindAsync(id);
+        var service = await _context.Services.FindAsync(id);
         if (service == null)
             return false;
 
-        _context.services.Remove(service);
+        _context.Services.Remove(service);
         await _context.SaveChangesAsync();
         return true;
     }

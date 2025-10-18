@@ -49,9 +49,9 @@ public partial class SupabaseDbContext : DbContext
         {
             entity.HasKey(e => new { e.car_id, e.service_id }).HasName("appointments_pk");
 
-            entity.HasOne(d => d.car).WithMany(p => p.Appointments).HasConstraintName("appointments_car_fk");
+            entity.HasOne(d => d.car).WithMany(p => p.appointments).HasConstraintName("appointments_car_fk");
 
-            entity.HasOne(d => d.service).WithMany(p => p.Appointments).HasConstraintName("appointments_service_fk");
+            entity.HasOne(d => d.service).WithMany(p => p.appointments).HasConstraintName("appointments_service_fk");
         });
 
         modelBuilder.Entity<Car>(entity =>
@@ -60,7 +60,7 @@ public partial class SupabaseDbContext : DbContext
 
             entity.Property(e => e.id).UseIdentityAlwaysColumn();
 
-            entity.HasOne(d => d.owner).WithMany(p => p.Cars)
+            entity.HasOne(d => d.owner).WithMany(p => p.cars)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("cars_owner_fk");
         });
@@ -86,9 +86,9 @@ public partial class SupabaseDbContext : DbContext
             entity.Property(e => e.id).ValueGeneratedNever();
             entity.Property(e => e.can_itp).HasDefaultValue(false);
 
-            entity.HasOne(d => d.city).WithMany(p => p.Services).HasConstraintName("Services_city_id_fkey");
+            entity.HasOne(d => d.city).WithMany(p => p.services).HasConstraintName("Services_city_id_fkey");
 
-            entity.HasOne(d => d.idNavigation).WithOne(p => p.Service).HasConstraintName("services_login_fk");
+            entity.HasOne(d => d.idNavigation).WithOne(p => p.service).HasConstraintName("services_login_fk");
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -97,7 +97,7 @@ public partial class SupabaseDbContext : DbContext
 
             entity.Property(e => e.id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.idNavigation).WithOne(p => p.User).HasConstraintName("users_login_fk");
+            entity.HasOne(d => d.idNavigation).WithOne(p => p.user).HasConstraintName("users_login_fk");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -6,12 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models.Scaffolded;
 
-[Index("cui", Name = "Services_cui_key", IsUnique = true)]
+[Table("Services")]
 [Index("city_id", Name = "idx_services_city")]
-<<<<<<< HEAD:backend/backend/Models/Scaffolded/service.cs
 [Index("cui", Name = "services_cui_key", IsUnique = true)]
-=======
->>>>>>> origin/newMain:backend/backend/Models/Scaffolded/Service.cs
 public partial class Service
 {
     [Key]
@@ -32,7 +29,6 @@ public partial class Service
     public bool? can_itp { get; set; }
 
     [InverseProperty("service")]
-<<<<<<< HEAD:backend/backend/Models/Scaffolded/service.cs
     public virtual ICollection<Appointment> appointments { get; set; } = new List<Appointment>();
 
     [ForeignKey("city_id")]
@@ -41,15 +37,5 @@ public partial class Service
 
     [ForeignKey("id")]
     [InverseProperty("service")]
-=======
-    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
-
-    [ForeignKey("city_id")]
-    [InverseProperty("Services")]
-    public virtual City? city { get; set; }
-
-    [ForeignKey("id")]
-    [InverseProperty("Service")]
->>>>>>> origin/newMain:backend/backend/Models/Scaffolded/Service.cs
     public virtual Login idNavigation { get; set; } = null!;
 }

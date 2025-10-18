@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models.Scaffolded;
 
+[Table("Cars")]
 [Index("owner_id", Name = "idx_cars_owner")]
 public partial class Car
 {
@@ -23,16 +24,9 @@ public partial class Car
     public long owner_id { get; set; }
 
     [InverseProperty("car")]
-<<<<<<< HEAD:backend/backend/Models/Scaffolded/car.cs
     public virtual ICollection<Appointment> appointments { get; set; } = new List<Appointment>();
 
     [ForeignKey("owner_id")]
     [InverseProperty("cars")]
-=======
-    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
-
-    [ForeignKey("owner_id")]
-    [InverseProperty("Cars")]
->>>>>>> origin/newMain:backend/backend/Models/Scaffolded/Car.cs
     public virtual User owner { get; set; } = null!;
 }
