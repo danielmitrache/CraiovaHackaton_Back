@@ -1,5 +1,8 @@
 namespace backend;
 
+using backend.Data;
+using Microsoft.EntityFrameworkCore;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -8,6 +11,11 @@ public class Program
 
         builder.Services.AddAuthorization();
         builder.Services.AddControllers();
+
+        // Register DbContext with Npgsql using ConnectionStrings:DefaultConnection
+        builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+        );
 
         builder.Services.AddOpenApi();
 
@@ -22,7 +30,6 @@ public class Program
 
         app.UseAuthorization();
 
-       
         app.MapControllers();
 
         app.Run();
