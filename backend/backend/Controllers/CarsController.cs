@@ -1,6 +1,7 @@
+using backend.Data.Scaffolded;
+using backend.Models.Scaffolded;
 using Microsoft.AspNetCore.Mvc;
-using backend.Data;
-using backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers;
 
@@ -8,21 +9,23 @@ namespace backend.Controllers;
 [Route("api/[controller]")]
 public class CarsController : ControllerBase
 {
-    private readonly ApplicationDbContext _db;
+    private readonly SupabaseDbContext _db;
 
-    public CarsController(ApplicationDbContext db)
+    public CarsController(SupabaseDbContext db)
     {
         _db = db;
     }
 
-    // GET /api/cars/{id}
+    // GET api/cars/{id}
     [HttpGet("{id:long}")]
     public async Task<ActionResult<Car>> GetById(long id, CancellationToken ct)
     {
-        var entity = await _db.cars.FindAsync(new object[] { id }, ct);
-        if (entity is null)
-            return NotFound();
-        return Ok(entity);
+        var car = await _db.Cars
+            .FirstOrDefaultAsync(c => c.id == id);
+
+        if (car == null)
+            return NotFound(new { message = $"Car {id} not found" });
+
+        return Ok(car);
     }
 }
-

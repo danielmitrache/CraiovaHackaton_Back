@@ -28,10 +28,18 @@ public partial class Appointment
     public decimal? material_price { get; set; }
 
     [ForeignKey("car_id")]
+<<<<<<< HEAD:backend/backend/Models/Scaffolded/appointment.cs
     [InverseProperty("appointments")]
     public virtual Car car { get; set; } = null!;
 
     [ForeignKey("service_id")]
     [InverseProperty("appointments")]
+=======
+    [InverseProperty("Appointments")]
+    public virtual Car car { get; set; } = null!;
+
+    [ForeignKey("service_id")]
+    [InverseProperty("Appointments")]
+>>>>>>> origin/newMain:backend/backend/Models/Scaffolded/Appointment.cs
     public virtual Service service { get; set; } = null!;
 }

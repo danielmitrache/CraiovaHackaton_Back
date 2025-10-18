@@ -12,22 +12,21 @@ public partial class SupabaseDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Appointment> appointments { get; set; }
+    public virtual DbSet<Appointment> Appointments { get; set; }
 
-    public virtual DbSet<Car> cars { get; set; }
+    public virtual DbSet<Car> Cars { get; set; }
 
-    public virtual DbSet<City> cities { get; set; }
+    public virtual DbSet<City> Cities { get; set; }
 
-    public virtual DbSet<Login> logins { get; set; }
+    public virtual DbSet<Login> Logins { get; set; }
 
-    public virtual DbSet<Service> services { get; set; }
+    public virtual DbSet<Service> Services { get; set; }
 
-    public virtual DbSet<User> users { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .HasPostgresEnum("account_type", new[] { "USER", "SERVICE" })
             .HasPostgresEnum("auth", "aal_level", new[] { "aal1", "aal2", "aal3" })
             .HasPostgresEnum("auth", "code_challenge_method", new[] { "s256", "plain" })
             .HasPostgresEnum("auth", "factor_status", new[] { "unverified", "verified" })
@@ -50,55 +49,55 @@ public partial class SupabaseDbContext : DbContext
         {
             entity.HasKey(e => new { e.car_id, e.service_id }).HasName("appointments_pk");
 
-            entity.HasOne(d => d.car).WithMany(p => p.appointments).HasConstraintName("appointments_car_fk");
+            entity.HasOne(d => d.car).WithMany(p => p.Appointments).HasConstraintName("appointments_car_fk");
 
-            entity.HasOne(d => d.service).WithMany(p => p.appointments).HasConstraintName("appointments_service_fk");
+            entity.HasOne(d => d.service).WithMany(p => p.Appointments).HasConstraintName("appointments_service_fk");
         });
 
         modelBuilder.Entity<Car>(entity =>
         {
-            entity.HasKey(e => e.id).HasName("cars_pkey");
+            entity.HasKey(e => e.id).HasName("Cars_pkey");
 
             entity.Property(e => e.id).UseIdentityAlwaysColumn();
 
-            entity.HasOne(d => d.owner).WithMany(p => p.cars)
+            entity.HasOne(d => d.owner).WithMany(p => p.Cars)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("cars_owner_fk");
         });
 
         modelBuilder.Entity<City>(entity =>
         {
-            entity.HasKey(e => e.id).HasName("city_pkey");
+            entity.HasKey(e => e.id).HasName("City_pkey");
 
             entity.Property(e => e.id).UseIdentityAlwaysColumn();
         }); 
 
         modelBuilder.Entity<Login>(entity =>
         {
-            entity.HasKey(e => e.id).HasName("login_pkey");
+            entity.HasKey(e => e.id).HasName("Login_pkey");
 
             entity.Property(e => e.id).UseIdentityAlwaysColumn();
         });
 
         modelBuilder.Entity<Service>(entity =>
         {
-            entity.HasKey(e => e.id).HasName("services_pkey");
+            entity.HasKey(e => e.id).HasName("Services_pkey");
 
             entity.Property(e => e.id).ValueGeneratedNever();
             entity.Property(e => e.can_itp).HasDefaultValue(false);
 
-            entity.HasOne(d => d.city).WithMany(p => p.services).HasConstraintName("services_city_id_fkey");
+            entity.HasOne(d => d.city).WithMany(p => p.Services).HasConstraintName("Services_city_id_fkey");
 
-            entity.HasOne(d => d.idNavigation).WithOne(p => p.service).HasConstraintName("services_login_fk");
+            entity.HasOne(d => d.idNavigation).WithOne(p => p.Service).HasConstraintName("services_login_fk");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.id).HasName("users_pkey");
+            entity.HasKey(e => e.id).HasName("Users_pkey");
 
             entity.Property(e => e.id).ValueGeneratedNever();
 
-            entity.HasOne(d => d.idNavigation).WithOne(p => p.user).HasConstraintName("users_login_fk");
+            entity.HasOne(d => d.idNavigation).WithOne(p => p.User).HasConstraintName("users_login_fk");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -14,9 +14,16 @@ public partial class User
     public string name { get; set; } = null!;
 
     [InverseProperty("owner")]
+<<<<<<< HEAD:backend/backend/Models/Scaffolded/user.cs
     public virtual ICollection<Car> cars { get; set; } = new List<Car>();
 
     [ForeignKey("id")]
     [InverseProperty("user")]
+=======
+    public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
+
+    [ForeignKey("id")]
+    [InverseProperty("User")]
+>>>>>>> origin/newMain:backend/backend/Models/Scaffolded/User.cs
     public virtual Login idNavigation { get; set; } = null!;
 }
